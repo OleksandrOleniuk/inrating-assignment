@@ -16,7 +16,28 @@ const getters = {
 
 const mutations = {
   IMT_USERS: (state, payload) => {
-    Array.prototype.push.apply(state.users, payload);
+    payload.forEach((item, index) => {
+      if (item.id) {
+        throw new Error(`json[${index}]  must not contain an id`);
+      }
+      if (!item.name) {
+        throw new Error(`json[${index}]  must contain an name`);
+      }
+      if (!item.surname) {
+        throw new Error(`json[${index}]  must contain an surname`);
+      }
+      if (!item.phone) {
+        throw new Error(`json[${index}]  must contain an phone`);
+      }
+      if (!item.email) {
+        throw new Error(`json[${index}]  must contain an email`);
+      }
+    });
+    const newArray = payload.map((item) => {
+      const stringID = RandomService.getRandomString(10);
+      return Object.assign({}, item, {id: stringID});
+    });
+    state.users.concat(newArray);
   },
 
   ADD_USER: (state, payload) => {

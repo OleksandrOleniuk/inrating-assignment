@@ -64,6 +64,8 @@
           this.IMPORT_USERS(importJson);
           this.$router.push('/');
         } catch (e) {
+          alert(`Not valid json:
+          ${e.message}`);
           console.error(e.message);
         }
       },
