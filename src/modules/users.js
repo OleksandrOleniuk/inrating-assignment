@@ -18,16 +18,16 @@ const mutations = {
   IMT_USERS: (state, payload) => {
     payload.forEach((item, index) => {
       if (item.id) {
-        throw new Error(`json[${index}]  must not contain an id`);
+        throw new Error(`json[${index}]  should not contain an id`);
       }
       if (!item.name) {
-        throw new Error(`json[${index}]  must contain an name`);
+        throw new Error(`json[${index}]  must contain a name`);
       }
       if (!item.surname) {
-        throw new Error(`json[${index}]  must contain an surname`);
+        throw new Error(`json[${index}]  must contain a surname`);
       }
       if (!item.phone) {
-        throw new Error(`json[${index}]  must contain an phone`);
+        throw new Error(`json[${index}]  must contain a phone`);
       }
       if (!item.email) {
         throw new Error(`json[${index}]  must contain an email`);
@@ -35,9 +35,9 @@ const mutations = {
     });
     const newArray = payload.map((item) => {
       const stringID = RandomService.getRandomString(10);
-      return Object.assign({}, item, {id: stringID});
+      return Object.assign({}, item, { id: stringID });
     });
-    state.users.concat(newArray);
+    state.users = state.users.concat(newArray);
   },
 
   ADD_USER: (state, payload) => {
