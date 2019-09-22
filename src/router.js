@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
+import User from "@/views/User";
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
   routes: [
@@ -10,6 +11,16 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home
+    },
+    {
+      path: '/cu-user',
+      name: 'user-create',
+      component: User,
+    },
+    {
+      path: '/cu-user/:id',
+      name: 'user-update',
+      component: User,
     },
     {
       path: '/about',

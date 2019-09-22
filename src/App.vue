@@ -7,7 +7,7 @@
     <router-view/>
   </div>
 </template>
-<style lang="stylus">
+<style scoped lang="stylus">
 #app
   font-family 'Avenir', Helvetica, Arial, sans-serif
   -webkit-font-smoothing antialiased
